@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>শাহজালাল রহমানিয়া দারুল কোরআন ইন্টারনেশনাল মাদ্রাসা</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Bengali:wght@400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1a4a2e;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #faf6ee;
+      --dark: #0e2a1a;
+      --text: #2c2c2c;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Serif Bengali', serif, Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      background: rgba(14, 42, 26, 0.97);
+      border-bottom: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Amiri', serif;
+      color: var(--gold);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+      font-family: 'Noto Serif Bengali', serif, Arial, sans-serif;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .lang-btn {
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .lang-btn:hover { background: var(--gold-light); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--dark) 0%, var(--green) 60%, #2d6a45 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 1rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg, transparent, transparent 60px,
+        rgba(201,168,76,0.05) 60px, rgba(201,168,76,0.05) 61px
+      ), repeating-linear-gradient(
+        90deg, transparent, transparent 60px,
+        rgba(201,168,76,0.05) 60px, rgba(201,168,76,0.05) 61px
+      );
+    }
+
+    .arabic-top {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      animation: fadeDown 1s ease both;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-emblem {
+      width: 120px; height: 120px;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 1rem auto;
+      background: rgba(201,168,76,0.1);
+      font-size: 3rem;
+      animation: fadeDown 1s 0.2s ease both;
+      box-shadow: 0 0 40px rgba(201,168,76,0.3);
+    }
+
+    .hero h1 {
+      font-family: 'Noto Serif Bengali', serif, Arial, sans-serif;
+      font-size: clamp(1.4rem, 4vw, 2.6rem);
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.4;
+      max-width: 800px;
+      animation: fadeDown 1s 0.4s ease both;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-en {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.75rem, 2vw, 1.1rem);
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+      animation: fadeDown 1s 0.6s ease both;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-info {
+      display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;
+      animation: fadeDown 1s 0.8s ease both;
+      margin-bottom: 2rem;
+    }
+    .hero-info span {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .hero-info span::before { content: '◆'; color: var(--gold); font-size: 0.6rem; }
+
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      animation: fadeDown 1s 1s ease both;
+    }
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      font-family: 'Noto Serif Bengali', serif, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+      display: inline-block;
+    }
+    .btn-gold { background: var(--gold); color: var(--dark); }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--gold); border-color: var(--gold); }
+    .btn-outline:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== DIVIDER ===== */
+    .gold-divider {
+      width: 100%; height: 6px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 5rem 1rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-title .arabic {
+      font-family: 'Amiri', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .section-title h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--green);
+      font-weight: 700;
+    }
+    .section-title p {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 0.4rem;
+    }
+    .title-line {
+      width: 80px; height: 3px;
+      background: var(--gold);
+      margin: 0.8rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-text p {
+      line-height: 1.9;
+      margin-bottom: 1rem;
+      color: #444;
+      font-size: 1.05rem;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, var(--green), #2d6a45);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      border-bottom: 3px solid var(--gold);
+    }
+    .stat-card .num {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+    .stat-card .label { font-size: 0.85rem; margin-top: 0.3rem; opacity: 0.9; }
+
+    /* ===== TEACHERS ===== */
+    #teachers { background: var(--cream); }
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .teacher-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-top: 4px solid var(--gold);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .teacher-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    .teacher-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), #2d6a45);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+      border: 3px solid var(--gold);
+    }
+    .teacher-card h3 { font-size: 1.05rem; color: var(--dark); margin-bottom: 0.3rem; }
+    .teacher-card .designation {
+      font-size: 0.85rem; color: var(--gold); font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .teacher-card .qualification { font-size: 0.82rem; color: #777; }
+
+    /* ===== ADMISSION ===== */
+    #admission { background: var(--white); }
+    .admission-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .admission-box {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 2rem;
+      border-left: 4px solid var(--gold);
+    }
+    .admission-box h3 {
+      color: var(--green);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .admission-box ul { list-style: none; }
+    .admission-box ul li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      font-size: 0.95rem;
+      color: #444;
+      display: flex; align-items: flex-start; gap: 0.5rem;
+    }
+    .admission-box ul li::before { content: '✦'; color: var(--gold); font-size: 0.7rem; margin-top: 0.3rem; }
+    .admission-box ul li:last-child { border-bottom: none; }
+
+    /* ===== CONTACT ===== */
+    #contact { background: linear-gradient(160deg, var(--dark), var(--green)); }
+    #contact .section-title h2 { color: white; }
+    #contact .section-title p { color: rgba(255,255,255,0.7); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .contact-info { color: white; }
+    .contact-info h3 {
+      color: var(--gold-light);
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Amiri', serif;
+    }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1.2rem;
+    }
+    .contact-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .contact-item .info h4 { color: var(--gold-light); font-size: 0.85rem; margin-bottom: 0.2rem; }
+    .contact-item .info p { color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+    .contact-item .info a { color: rgba(255,255,255,0.85); text-decoration: none; }
+    .contact-item .info a:hover { color: var(--gold-light); }
+
+    .contact-form { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 2rem; }
+    .contact-form h3 { color: var(--gold-light); font-size: 1.1rem; margin-bottom: 1.2rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; color: rgba(255,255,255,0.8); font-size: 0.88rem; margin-bottom: 0.3rem; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 4px;
+      padding: 0.7rem 1rem;
+      color: white;
+      font-family: 'Noto Serif Bengali', serif, Arial, sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { height: 100px; resize: vertical; }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-top: 2px solid var(--gold);
+    }
+    footer p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+    footer .gold { color: var(--gold); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid,
+      .admission-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ===== LANGUAGE TOGGLE ===== */
+    .lang-en { display: none; }
+    body.english .lang-bn { display: none; }
+    body.english .lang-en { display: block; }
+    body.english span.lang-bn { display: none; }
+    body.english span.lang-en { display: inline; }
+
+    /* Scroll animation */
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="lang-bn">শাহজালাল রহমানিয়া<br>দারুল কোরআন</span>
+    <span class="lang-en" style="display:none">Shahjalalal Rahmania<br>Darul Quran</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about"><span class="lang-bn">পরিচয়</span><span class="lang-en" style="display:none">About</span></a></li>
+    <li><a href="#teachers"><span class="lang-bn">শিক্ষকমণ্ডলী</span><span class="lang-en" style="display:none">Teachers</span></a></li>
+    <li><a href="#admission"><span class="lang-bn">ভর্তি তথ্য</span><span class="lang-en" style="display:none">Admission</span></a></li>
+    <li><a href="#contact"><span class="lang-bn">যোগাযোগ</span><span class="lang-en" style="display:none">Contact</span></a></li>
+  </ul>
+  <button class="lang-btn" onclick="toggleLang()" id="langBtn">English</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="arabic-top">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <div class="hero-emblem">🕌</div>
+  <h1 class="lang-bn">শাহজালাল রহমানিয়া দারুল কোরআন<br>ইন্টারনেশনাল মাদ্রাসা</h1>
+  <h1 class="lang-en" style="display:none">Shahjalalal Rahmania Darul Quran<br>International Madrasa</h1>
+  <p class="hero-en">Sylhet, Bangladesh — Est. 2019</p>
+  <div class="hero-info">
+    <span class="lang-bn">সিলেট, জিন্দাবাজার</span>
+    <span class="lang-en" style="display:none">Zindabazar, Sylhet</span>
+    <span class="lang-bn">প্রতিষ্ঠাকাল: ২০১৯</span>
+    <span class="lang-en" style="display:none">Est. 2019</span>
+    <span class="lang-bn">কুরআন ও দ্বীনি শিক্ষার আলোকঘর</span>
+    <span class="lang-en" style="display:none">A beacon of Quranic education</span>
+  </div>
+  <div class="hero-btns">
+    <a href="#admission" class="btn btn-gold lang-bn">ভর্তি হোন</a>
+    <a href="#admission" class="btn btn-gold lang-en" style="display:none">Apply Now</a>
+    <a href="#contact" class="btn btn-outline lang-bn">যোগাযোগ করুন</a>
+    <a href="#contact" class="btn btn-outline lang-en" style="display:none">Contact Us</a>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-title fade-in">
+      <span class="arabic">تعريف المدرسة</span>
+      <h2 class="lang-bn">মাদ্রাসার পরিচয়</h2>
+      <h2 class="lang-en" style="display:none">About the Madrasa</h2>
+      <div class="title-line"></div>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p class="lang-bn">
+          শাহজালাল রহমানিয়া দারুল কোরআন ইন্টারনেশনাল মাদ্রাসা ২০১৯ সালে সিলেটের জিন্দাবাজারে প্রতিষ্ঠিত হয়। এটি একটি ইসলামী শিক্ষা প্রতিষ্ঠান যেখানে শিশু থেকে বয়স্ক সকলকে কুরআনুল কারিম শিক্ষা দেওয়া হয়।
+        </p>
+        <p class="lang-en" style="display:none">
+          Shahjalalal Rahmania Darul Quran International Madrasa was established in 2019 in Zindabazar, Sylhet. It is an Islamic educational institution dedicated to Quranic education for all ages.
+        </p>
+        <p class="lang-bn">
+          আমাদের লক্ষ্য হলো কুরআন ও সুন্নাহর আলোকে একটি আদর্শ ইসলামী সমাজ গড়ে তোলা। অভিজ্ঞ আলেম ও হাফেজদের তত্ত্বাবধানে এখানে হিফজ, নাজেরা, কিরাত এবং ইসলামী জ্ঞান শিক্ষা দেওয়া হয়।
+        </p>
+        <p class="lang-en" style="display:none">
+          Our mission is to build an ideal Islamic society in the light of the Quran and Sunnah. Under experienced scholars and Huffaz, we teach Hifz, Nazera, Qirat, and Islamic sciences.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="num">২০১৯</div>
+          <div class="label lang-bn">প্রতিষ্ঠাকাল</div>
+          <div class="label lang-en" style="display:none">Established</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">৫+</div>
+          <div class="label lang-bn">বছরের অভিজ্ঞতা</div>
+          <div class="label lang-en" style="display:none">Years of Service</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">৩০০+</div>
+          <div class="label lang-bn">ছাত্রছাত্রী</div>
+          <div class="label lang-en" style="display:none">Students</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">১৫+</div>
+          <div class="label lang-bn">অভিজ্ঞ শিক্ষক</div>
+          <div class="label lang-en" style="display:none">Experienced Teachers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers">
+  <div class="container">
+    <div class="section-title fade-in">
+      <span class="arabic">هيئة التدريس</span>
+      <h2 class="lang-bn">শিক্ষকমণ্ডলী</h2>
+      <h2 class="lang-en" style="display:none">Our Teachers</h2>
+      <div class="title-line"></div>
+    </div>
+    <div class="teachers-grid fade-in">
+      <div class="teacher-card">
+        <div class="teacher-avatar">👨‍🎓</div>
+        <h3>হাফিজ মাওলানা আব্দুল মুক্তাদির আল আজহারি</h3>
+        <p class="designation lang-bn">প্রধান শিক্ষক ও প্রতিষ্ঠাতা</p>
+        <p class="designation lang-en" style="display:none">Principal & Founder</p>
+        <p class="qualification">আল-আজহার বিশ্ববিদ্যালয়, মিশর</p>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar">👨‍🏫</div>
+        <h3 class="lang-bn">হাফিজ মাওলানা (সহকারী শিক্ষক)</h3>
+        <h3 class="lang-en" style="display:none">Hafiz Maulana (Asst. Teacher)</h3>
+        <p class="designation lang-bn">কিরাত বিভাগ প্রধান</p>
+        <p class="designation lang-en" style="display:none">Head of Qirat Dept.</p>
+        <p class="qualification lang-bn">দারুল উলুম দেওবন্দ</p>
+        <p class="qualification lang-en" style="display:none">Darul Uloom Deoband</p>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar">👩‍🏫</div>
+        <h3 class="lang-bn">হাফিজা (মহিলা বিভাগ)</h3>
+        <h3 class="lang-en" style="display:none">Hafiza (Women's Section)</h3>
+        <p class="designation lang-bn">মহিলা বিভাগ প্রধান</p>
+        <p class="designation lang-en" style="display:none">Head of Women's Section</p>
+        <p class="qualification lang-bn">সিলেট আলিয়া মাদ্রাসা</p>
+        <p class="qualification lang-en" style="display:none">Sylhet Alia Madrasa</p>
+      </div>
+      <div class="teacher-card">
+        <div class="teacher-avatar">📖</div>
+        <h3 class="lang-bn">মাওলানা (হিফজ বিভাগ)</h3>
+        <h3 class="lang-en" style="display:none">Maulana (Hifz Dept.)</h3>
+        <p class="designation lang-bn">হিফজ বিভাগ তত্ত্বাবধায়ক</p>
+        <p class="designation lang-en" style="display:none">Hifz Supervisor</p>
+        <p class="qualification lang-bn">বাংলাদেশ মাদ্রাসা শিক্ষাবোর্ড</p>
+        <p class="qualification lang-en" style="display:none">Bangladesh Madrasa Board</p>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:1.5rem; color:#888; font-size:0.9rem;" class="lang-bn">
+      * শিক্ষকদের পূর্ণ তালিকার জন্য মাদ্রাসায় যোগাযোগ করুন
+    </p>
+    <p style="text-align:center; margin-top:1.5rem; color:#888; font-size:0.9rem;" class="lang-en" style="display:none">
+      * Contact madrasa for full list of teachers
+    </p>
+  </div>
+</section>
+
+<!-- ADMISSION -->
+<section id="admission">
+  <div class="container">
+    <div class="section-title fade-in">
+      <span class="arabic">القبول والتسجيل</span>
+      <h2 class="lang-bn">ভর্তি তথ্য</h2>
+      <h2 class="lang-en" style="display:none">Admission Information</h2>
+      <div class="title-line"></div>
+    </div>
+    <div class="admission-grid fade-in">
+      <div class="admission-box">
+        <h3 class="lang-bn">📋 ভর্তির যোগ্যতা</h3>
+        <h3 class="lang-en" style="display:none">📋 Eligibility</h3>
+        <ul>
+          <li class="lang-bn">বয়স: ৫ থেকে ১৮ বছর (নাজেরা বিভাগ)</li>
+          <li class="lang-en" style="display:none">Age: 5–18 years (Nazera Dept.)</li>
+          <li class="lang-bn">হিফজ বিভাগ: বয়স ৭–১৫ বছর</li>
+          <li class="lang-en" style="display:none">Hifz Dept: Age 7–15 years</li>
+          <li class="lang-bn">মহিলা বিভাগ: সকল বয়স</li>
+          <li class="lang-en" style="display:none">Women's Section: All ages</li>
+          <li class="lang-bn">অনলাইন ক্লাস: যেকোনো বয়স</li>
+          <li class="lang-en" style="display:none">Online Classes: Any age</li>
+        </ul>
+      </div>
+      <div class="admission-box">
+        <h3 class="lang-bn">📚 বিভাগসমূহ</h3>
+        <h3 class="lang-en" style="display:none">📚 Departments</h3>
+        <ul>
+          <li class="lang-bn">হিফজুল কুরআন বিভাগ</li>
+          <li class="lang-en" style="display:none">Hifzul Quran Department</li>
+          <li class="lang-bn">নাজেরা বিভাগ</li>
+          <li class="lang-en" style="display:none">Nazera Department</li>
+          <li class="lang-bn">কিরাত ও তাজবীদ বিভাগ</li>
+          <li class="lang-en" style="display:none">Qirat & Tajweed Department</li>
+          <li class="lang-bn">মহিলা বিভাগ</li>
+          <li class="lang-en" style="display:none">Women's Department</li>
+          <li class="lang-bn">অনলাইন কুরআন শিক্ষা</li>
+          <li class="lang-en" style="display:none">Online Quran Learning</li>
+        </ul>
+      </div>
+      <div class="admission-box">
+        <h3 class="lang-bn">📄 প্রয়োজনীয় কাগজপত্র</h3>
+        <h3 class="lang-en" style="display:none">📄 Required Documents</h3>
+        <ul>
+          <li class="lang-bn">জন্ম সনদের ফটোকপি</li>
+          <li class="lang-en" style="display:none">Birth certificate copy</li>
+          <li class="lang-bn">২ কপি পাসপোর্ট সাইজ ছবি</li>
+          <li class="lang-en" style="display:none">2 passport-size photos</li>
+          <li class="lang-bn">অভিভাবকের জাতীয় পরিচয়পত্র</li>
+          <li class="lang-en" style="display:none">Guardian's NID copy</li>
+          <li class="lang-bn">পূর্ববর্তী শিক্ষা সনদ (যদি থাকে)</li>
+          <li class="lang-en" style="display:none">Previous education certificate (if any)</li>
+        </ul>
+      </div>
+      <div class="admission-box">
+        <h3 class="lang-bn">🕐 ভর্তির সময়</h3>
+        <h3 class="lang-en" style="display:none">🕐 Admission Period</h3>
+        <ul>
+          <li class="lang-bn">সকাল ৯টা থেকে বিকাল ৫টা</li>
+          <li class="lang-en" style="display:none">9 AM to 5 PM</li>
+          <li class="lang-bn">শনিবার থেকে বৃহস্পতিবার</li>
+          <li class="lang-en" style="display:none">Saturday to Thursday</li>
+          <li class="lang-bn">সারা বছর ভর্তি চলে</li>
+          <li class="lang-en" style="display:none">Admissions open year-round</li>
+          <li class="lang-bn">ফোনে যোগাযোগ করেও ভর্তি হওয়া যায়</li>
+          <li class="lang-en" style="display:none">Phone admission also available</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="#contact" class="btn btn-gold lang-bn">ভর্তির জন্য যোগাযোগ করুন</a>
+      <a href="#contact" class="btn btn-gold lang-en" style="display:none">Contact for Admission</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title fade-in">
+      <span class="arabic" style="color:var(--gold-light)">تواصل معنا</span>
+      <h2>যোগাযোগ করুন</h2>
+      <p style="color:rgba(255,255,255,0.6)" class="lang-bn">আমরা সর্বদা আপনার সেবায় প্রস্তুত</p>
+      <p style="color:rgba(255,255,255,0.6)" class="lang-en" style="display:none">We are always ready to serve you</p>
+      <div class="title-line"></div>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <h3 class="lang-bn">📍 আমাদের ঠিকানা ও যোগাযোগ</h3>
+        <h3 class="lang-en" style="display:none">📍 Address & Contact</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="info">
+            <h4 class="lang-bn">ঠিকানা</h4>
+            <h4 class="lang-en" style="display:none">Address</h4>
+            <p class="lang-bn">৪৫, তাঁতিপাড়া, জিন্দাবাজার, সিলেট</p>
+            <p class="lang-en" style="display:none">45, Tatipara, Zindabazar, Sylhet, Bangladesh</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="info">
+            <h4 class="lang-bn">ফোন</h4>
+            <h4 class="lang-en" style="display:none">Phone</h4>
+            <p><a href="tel:+8801712811698">০১৭১২-৮১১৬৯৮</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="info">
+            <h4>Email</h4>
+            <p><a href="/cdn-cgi/l/email-protection#d3a1b2bbbeb2bdbab2bee1e3e2ea93b4beb2babffdb0bcbe"><span class="__cf_email__" data-cfemail="fb899a93969a95929a96c9cbcac2bb9c969a9297d5989496">[email&#160;protected]</span></a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="info">
+            <h4 class="lang-bn">অফিস সময়</h4>
+            <h4 class="lang-en" style="display:none">Office Hours</h4>
+            <p class="lang-bn">সকাল ৯টা — বিকাল ৫টা<br>শনি — বৃহস্পতি</p>
+            <p class="lang-en" style="display:none">9 AM — 5 PM<br>Sat — Thu</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 class="lang-bn">💬 বার্তা পাঠান</h3>
+        <h3 class="lang-en" style="display:none">💬 Send a Message</h3>
+        <div class="form-group">
+          <label class="lang-bn">আপনার নাম</label>
+          <label class="lang-en" style="display:none">Your Name</label>
+          <input type="text" placeholder="নাম লিখুন..." />
+        </div>
+        <div class="form-group">
+          <label class="lang-bn">ফোন নম্বর</label>
+          <label class="lang-en" style="display:none">Phone Number</label>
+          <input type="tel" placeholder="০১XXXXXXXXX" />
+        </div>
+        <div class="form-group">
+          <label class="lang-bn">বার্তা</label>
+          <label class="lang-en" style="display:none">Message</label>
+          <textarea placeholder="আপনার বার্তা লিখুন..."></textarea>
+        </div>
+        <button class="btn btn-gold" style="width:100%; border:none;"
+          onclick="alert('আপনার বার্তা পাঠানো হয়েছে! আমরা শীঘ্রই যোগাযোগ করব। জাযাকাল্লাহু খাইরান।')">
+          <span class="lang-bn">বার্তা পাঠান ✉️</span>
+          <span class="lang-en" style="display:none">Send Message ✉️</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="lang-bn">© ২০২৪ <span class="gold">শাহজালাল রহমানিয়া দারুল কোরআন ইন্টারনেশনাল মাদ্রাসা</span> — সিলেট, বাংলাদেশ</p>
+  <p class="lang-en" style="display:none">© 2024 <span class="gold">Shahjalalal Rahmania Darul Quran International Madrasa</span> — Sylhet, Bangladesh</p>
+  <p style="margin-top:0.5rem; font-family:'Amiri',serif; color:var(--gold); font-size:1rem;">رَبَّنَا تَقَبَّلْ مِنَّا</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Language toggle
+  let isEnglish = false;
+  function toggleLang() {
+    isEnglish = !isEnglish;
+    document.body.classList.toggle('english', isEnglish);
+    document.getElementById('langBtn').textContent = isEnglish ? 'বাংলা' : 'English';
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = isEnglish ? 'block' : 'none');
+    document.querySelectorAll('.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'block');
+    // Fix inline elements
+    document.querySelectorAll('span.lang-en').forEach(el => el.style.display = isEnglish ? 'inline' : 'none');
+    document.querySelectorAll('span.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'inline');
+    document.querySelectorAll('a.lang-en').forEach(el => el.style.display = isEnglish ? 'inline-block' : 'none');
+    document.querySelectorAll('a.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'inline-block');
+  }
+
+  // Scroll fade-in
+  const observer = new Int
