@@ -398,7 +398,39 @@
   display: flex; align-items: center; gap: 0.5rem;
 }
 nav { top: 36px !important; }
-  </style>
+ .three-dot-menu { position: relative; }
+.three-dot-btn {
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-size: 1.4rem;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 1;
+}
+.three-dot-dropdown {
+  display: none;
+  position: absolute;
+  right: 0; top: 45px;
+  background: var(--dark);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  min-width: 180px;
+  z-index: 9999;
+  overflow: hidden;
+}
+.three-dot-dropdown a {
+  display: block;
+  padding: 0.8rem 1.2rem;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  font-size: 0.95rem;
+}
+.three-dot-dropdown a:hover { background: rgba(201,168,76,0.1); }
+.three-dot-dropdown.open { display: block; }
+ </style>
 </head>
 <body>
 
@@ -420,6 +452,14 @@ nav { top: 36px !important; }
     <li><a href="#admission"><span class="lang-bn">ভর্তি তথ্য</span><span class="lang-en" style="display:none">admission</span></a></li>
     <li><a href="#contact"><span class="lang-bn">যোগাযোগ</span><span class="lang-en" style="display:none">Contact</span></a></li>
   </ul>
+ <div class="three-dot-menu">
+  <button class="three-dot-btn" onclick="toggleMenu()">⋮</button>
+  <div class="three-dot-dropdown" id="dotMenu">
+    <a href="#notice">📢 নোটিশ</a>
+    <a href="#gallery">🖼️ গ্যালারি</a>
+    <a href="#results">📝 পরীক্ষার ফলাফল</a>
+  </div>
+</div>
   <button class="lang-btn" onclick="toggleLang()" id="langBtn">English</button>
 </nav>
 
@@ -701,7 +741,6 @@ nav { top: 36px !important; }
     </div>
   </div>
 </section>
-
       <!-- GALLERY -->
 <section id="gallery">
   <div class="container">
@@ -728,6 +767,9 @@ nav { top: 36px !important; }
   <p style="margin-top:0.5rem; font-family:'Amiri',serif; color:var(--gold); font-size:1rem;">رَبَّنَا تَقَبَّلْ مِنَّا</p>
 </footer>
 
+  function toggleMenu() {
+  document.getElementById('dotMenu').classList.toggle('open');
+}
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Language toggle
   let isEnglish = false;
@@ -741,7 +783,8 @@ nav { top: 36px !important; }
     document.querySelectorAll('span.lang-en').forEach(el => el.style.display = isEnglish ? 'inline' : 'none');
     document.querySelectorAll('span.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'inline');
     document.querySelectorAll('a.lang-en').forEach(el => el.style.display = isEnglish ? 'inline-block' : 'none');
-    document.querySelectorAll('a.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'inline-block');
+    document.querySelectorAll(
+<script'a.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'inline-block');
   }
 
   // Scroll fade-in
