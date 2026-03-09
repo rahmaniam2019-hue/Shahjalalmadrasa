@@ -384,11 +384,30 @@
     body.english span.lang-bn { display: none; }
     body.english span.lang-en { display: inline; }
 
-
+.notice-bar {
+  background: var(--gold);
+  color: var(--dark);
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  position: fixed;
+  top: 0; width: 100%;
+  z-index: 1000;
+}
+.notice-inner {
+  display: flex; align-items: center; gap: 0.5rem;
+}
+nav { top: 36px !important; }
   </style>
 </head>
 <body>
 
+<div class="notice-bar">
+  <div class="notice-inner">
+    <span>📢</span>
+    <marquee>🌙 ভর্তি চলছে — এখনই যোগাযোগ করুন: ০১৭১২-৮১১৬৯৮ &nbsp;&nbsp;&nbsp; 📚 হিফজ, নাজেরা, কিরাত বিভাগে আসন সীমিত &nbsp;&nbsp;&nbsp; 🎓 নতুন সেশন শুরু হচ্ছে শীঘ্রই</marquee>
+  </div>
+</div>
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
