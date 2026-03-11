@@ -773,21 +773,38 @@ nav { top: 36px !important; }
  
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"> function toggleMenu() {
   document.getElementById('dotMenu').classList.toggle('open');
-} </script><script>
+<script>
   // Language toggle
   let isEnglish = false;
   function toggleLang() {
     isEnglish = !isEnglish;
-    document.body.classList.toggle('english', isEnglish);
     document.getElementById('langBtn').textContent = isEnglish ? 'বাংলা' : 'English';
     document.querySelectorAll('.lang-en').forEach(el => el.style.display = isEnglish ? 'block' : 'none');
     document.querySelectorAll('.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'block');
-    // Fix inline elements
     document.querySelectorAll('span.lang-en').forEach(el => el.style.display = isEnglish ? 'inline' : 'none');
     document.querySelectorAll('span.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'inline');
     document.querySelectorAll('a.lang-en').forEach(el => el.style.display = isEnglish ? 'inline-block' : 'none');
-    document.querySelectorAll(
- document.querySelectorAll('a.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'inline-block');
+    document.querySelectorAll('a.lang-bn').forEach(el => el.style.display = isEnglish ? 'none' : 'inline-block');
+  }
 
+  // 3 dot menu
+  function toggleMenu() {
+    var menu = document.getElementById('dotMenu');
+    if (menu.style.display === 'block') {
+      menu.style.display = 'none';
+    } else {
+      menu.style.display = 'block';
+    }
+  }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('dotMenu');
+    var btn = document.querySelector('.three-dot-btn');
+    if (menu && btn && !btn.contains(e.target)) {
+      menu.style.display = 'none';
+    }
+  });
+</script>
   // Scroll fade-in
   const observer = new Int
