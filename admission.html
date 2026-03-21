@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ভর্তি আবেদন ফর্ম - শাহজালাল রহমানিয়া দারুল কোরআন মাদ্রাসা</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1a4a2e;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #faf6ee;
+      --dark: #0e2a1a;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Hind Siliguri', sans-serif; background: var(--cream); color: #2c2c2c; min-height: 100vh; }
+    .form-header { background: linear-gradient(160deg, var(--dark) 0%, var(--green) 100%); padding: 2rem 1rem; text-align: center; border-bottom: 4px solid var(--gold); }
+    .form-header .arabic { font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--gold-light); display: block; margin-bottom: 0.5rem; }
+    .form-header h1 { color: white; font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 700; margin-bottom: 0.3rem; }
+    .form-header p { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold-light); text-decoration: none; font-size: 0.9rem; margin-bottom: 1rem; }
+    .progress-bar { background: rgba(255,255,255,0.2); border-radius: 50px; height: 6px; margin-top: 1rem; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--gold); border-radius: 50px; width: 0%; transition: width 0.3s; }
+    .form-container { max-width: 750px; margin: 2rem auto; padding: 0 1rem 3rem; }
+    .form-section { background: white; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 5px solid var(--gold); box-shadow: 0 2px 15px rgba(0,0,0,0.07); }
+    .form-section h2 { color: var(--green); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--cream); }
+    .field-group { margin-bottom: 1rem; }
+    .field-group label { display: block; font-weight: 600; color: var(--green); font-size: 0.92rem; margin-bottom: 0.4rem; }
+    .field-group label span { color: #e53e3e; margin-left: 2px; }
+    .field-wrapper { display: flex; align-items: center; background: #f0f7f4; border: 2px solid #c8e6c9; border-radius: 8px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
+    .field-wrapper:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.15); background: white; }
+    .field-icon { width: 42px; text-align: center; font-size: 1rem; color: var(--green); flex-shrink: 0; padding: 0 0.5rem; }
+    .field-wrapper input, .field-wrapper select { flex: 1; border: none; background: transparent; padding: 0.75rem 0.75rem 0.75rem 0; font-family: 'Hind Siliguri', sans-serif; font-size: 0.95rem; color: #2c2c2c; outline: none; width: 100%; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+    .upload-box { display: block; text-decoration: none; background: #f0f7f4; border: 2px dashed #c8e6c9; border-radius: 8px; padding: 1.2rem; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .upload-box:hover { border-color: var(--gold); background: #fffbf0; transform: translateY(-2px); }
+    .upload-box .upload-icon { font-size: 1.8rem; display: block; margin-bottom: 0.4rem; }
+    .upload-box .upload-title { font-weight: 700; color: var(--green); font-size: 0.95rem; display: block; margin-bottom: 0.2rem; }
+    .upload-box .upload-desc { font-size: 0.82rem; color: #888; }
+    .checkbox-group { display: flex; align-items: flex-start; gap: 0.8rem; background: #f0f7f4; border: 2px solid #c8e6c9; border-radius: 8px; padding: 1rem; }
+    .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; flex-shrink: 0; cursor: pointer; accent-color: var(--green); margin-top: 2px; }
+    .checkbox-group label { font-size: 0.9rem; color: #444; cursor: pointer; line-height: 1.5; }
+    .submit-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--green), #2d6a45); color: white; border: none; border-radius: 8px; font-family: 'Hind Siliguri', sans-serif; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 1rem; border-bottom: 4px solid var(--gold); }
+    .submit-btn:hover { background: linear-gradient(135deg, #0e2a1a, #1a4a2e); transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+    .success-msg { display: none; background: linear-gradient(135deg, var(--green), #2d6a45); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin-top: 1rem; border: 3px solid var(--gold); }
+    .success-msg h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .success-msg .arabic { font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--gold-light); }
+    .required-note { font-size: 0.82rem; color: #888; text-align: right; margin-bottom: 1rem; }
+    .required-note span { color: #e53e3e; }
+    .notice-box { background: #fff8e1; border: 2px solid var(--gold); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; font-size: 0.9rem; color: #555; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<div class="form-header">
+  <a href="index.html" class="back-link">← মূল পেজে ফিরুন</a>
+  <span class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+  <h1>শাহজালাল রহমানিয়া দারুল কোরআন ইন্টারনেশনাল মাদ্রাসা</h1>
+  <p>ভর্তি আবেদন ফর্ম | Admission Application Form</p>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<div class="form-container">
+  <p class="required-note"><span>*</span> চিহ্নিত ঘর পূরণ করা আবশ্যিক</p>
+
+  <form id="admissionForm" onsubmit="submitForm(event)">
+
+    <div class="form-section">
+      <h2>👤 ছাত্রের ব্যক্তিগত তথ্য</h2>
+      <div class="two-col">
+        <div class="field-group">
+          <label>পূর্ণ নাম (বাংলা) <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">👤</div>
+            <input type="text" name="full_name_bn" placeholder="বাংলায় নাম লিখুন" required onkeydown="nextOnEnter(event,'full_name_en')">
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Full Name (English) <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">👤</div>
+            <input type="text" id="full_name_en" name="full_name_en" placeholder="Write name in English" required onkeydown="nextOnEnter(event,'father_name_bn')">
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>পিতার নাম (বাংলা) <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">👨</div>
+            <input type="text" id="father_name_bn" name="father_name_bn" placeholder="পিতার নাম" required onkeydown="nextOnEnter(event,'father_name_en')">
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Father's Name (English)</label>
+          <div class="field-wrapper">
+            <div class="field-icon">👨</div>
+            <input type="text" id="father_name_en" name="father_name_en" placeholder="Father's name" onkeydown="nextOnEnter(event,'mother_name_bn')">
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>মাতার নাম (বাংলা) <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">👩</div>
+            <input type="text" id="mother_name_bn" name="mother_name_bn" placeholder="মাতার নাম" required onkeydown="nextOnEnter(event,'dob')">
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Mother's Name (English)</label>
+          <div class="field-wrapper">
+            <div class="field-icon">👩</div>
+            <input type="text" name="mother_name_en" placeholder="Mother's name" onkeydown="nextOnEnter(event,'dob')">
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>জন্ম তারিখ <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">📅</div>
+            <input type="date" id="dob" name="dob" required onkeydown="nextOnEnter(event,'birth_reg')">
+          </div>
+        </div>
+        <div class="field-group">
+          <label>জন্ম নিবন্ধন নম্বর</label>
+          <div class="field-wrapper">
+            <div class="field-icon">📋</div>
+            <input type="text" id="birth_reg" name="birth_reg" placeholder="জন্ম নিবন্ধন নম্বর" onkeydown="nextOnEnter(event,'mobile')">
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>মোবাইল নম্বর <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">📞</div>
+            <input type="tel" id="mobile" name="mobile" placeholder="০১XXXXXXXXX" required onkeydown="nextOnEnter(event,'email')">
+          </div>
+        </div>
+        <div class="field-group">
+          <label>ইমেইল</label>
+          <div class="field-wrapper">
+            <div class="field-icon">✉️</div>
+            <input type="email" id="email" name="email" placeholder="email@gmail.com">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>📚 ভর্তি সংক্রান্ত তথ্য</h2>
+      <div class="two-col">
+        <div class="field-group">
+          <label>কুরআনের বর্তমান অবস্থান <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">📖</div>
+            <select name="quran_level" required>
+              <option value="">সিলেক্ট করুন</option>
+              <option>সূরা নাস থেকে শুরু</option>
+              <option>আম্মা পারা</option>
+              <option>তাবারাক পারা</option>
+              <option>কায়দা শেষ</option>
+              <option>নাজেরা চলছে</option>
+              <option>হিফজ চলছে</option>
+              <option>হাফেজ</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-group">
+          <label>ভর্তির বিভাগ <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">🎓</div>
+            <select name="admission_class" required>
+              <option value="">সিলেক্ট করুন</option>
+              <option>হিফজ বিভাগ</option>
+              <option>নাজেরা বিভাগ</option>
+              <option>কিরাত বিভাগ</option>
+              <option>মহিলা বিভাগ</option>
+              <option>অনলাইন বিভাগ</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>পূর্ববর্তী মাদ্রাসার নাম</label>
+          <div class="field-wrapper">
+            <div class="field-icon">🏫</div>
+            <input type="text" name="prev_madrasa" placeholder="পূর্ববর্তী মাদ্রাসা (যদি থাকে)">
+          </div>
+        </div>
+        <div class="field-group">
+          <label>সাধারণ শিক্ষার যোগ্যতা</label>
+          <div class="field-wrapper">
+            <div class="field-icon">📝</div>
+            <input type="text" name="general_edu" placeholder="যেমন: ক্লাস ৫, JSC ইত্যাদি">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>🏠 ঠিকানা</h2>
+      <div class="two-col">
+        <div class="field-group">
+          <label>গ্রাম/মহল্লা <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">🏘️</div>
+            <input type="text" name="village" placeholder="গ্রাম বা মহল্লার নাম" required onkeydown="nextOnEnter(event,'post_office')">
+          </div>
+        </div>
+        <div class="field-group">
+          <label>পোস্ট অফিস</label>
+          <div class="field-wrapper">
+            <div class="field-icon">📮</div>
+            <input type="text" id="post_office" name="post_office" placeholder="পোস্ট অফিস" onkeydown="nextOnEnter(event,'upazila')">
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>উপজেলা <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">🗺️</div>
+            <input type="text" id="upazila" name="upazila" placeholder="উপজেলা" required onkeydown="nextOnEnter(event,'district')">
+          </div>
+        </div>
+        <div class="field-group">
+          <label>জেলা <span>*</span></label>
+          <div class="field-wrapper">
+            <div class="field-icon">📍</div>
+            <input type="text" id="district" name="district" placeholder="জেলা" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>📎 ছবি ও ডকুমেন্ট আপলোড</h2>
+      <div class="notice-box">
+        ⚠️ নিচের বাটনগুলোতে ক্লিক করে ছবি ও ডকুমেন্ট আলাদাভাবে আপলোড করুন।
+      </div>
+      <div class="two-col">
+        <div class="field-group">
+          <label>ছাত্রের পাসপোর্ট ছবি <span>*</span></label>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeycvQ59dRonLkKbR4vvUzrX1Sd7iKrUETppCej1ZNH9HM6Rw/viewform" target="_blank" class="upload-box">
+            <span class="upload-icon">📷</span>
+            <span class="upload-title">ছবি আপলোড করুন</span>
+            <span class="upload-desc">ক্লিক করলে আপলোড ফর্ম খুলবে</span>
+          </a>
+        </div>
+        <div class="field-group">
+          <label>জন্ম নিবন্ধন কার্ড <span>*</span></label>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeycvQ59dRonLkKbR4vvUzrX1Sd7iKrUETppCej1ZNH9HM6Rw/viewform" target="_blank" class="upload-box">
+            <span class="upload-icon">📄</span>
+            <span class="upload-title">জন্ম নিবন্ধন আপলোড করুন</span>
+            <span class="upload-desc">ক্লিক করলে আপলোড ফর্ম খুলবে</span>
+          </a>
+        </div>
+      </div>
+      <div class="field-group" style="margin-top:1rem;">
+        <label>মা/বাবার NID কার্ড</label>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeycvQ59dRonLkKbR4vvUzrX1Sd7iKrUETppCej1ZNH9HM6Rw/viewform" target="_blank" class="upload-box">
+          <span class="upload-icon">🪪</span>
+          <span class="upload-title">NID কার্ড আপলোড করুন</span>
+          <span class="upload-desc">ক্লিক করলে আপলোড ফর্ম খুলবে</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>✅ নিশ্চিতকরণ</h2>
+      <div class="checkbox-group">
+        <input type="checkbox" id="confirm" required>
+        <label for="confirm">আমি নিশ্চিত করছি যে উপরে প্রদত্ত সকল তথ্য সত্য ও সঠিক। মাদ্রাসার নিয়মকানুন মেনে চলতে আমি/আমার অভিভাবক সম্মত।</label>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">✦ আবেদন জমা দিন ✦</button>
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <div class="arabic">جَزَاكَ اللَّهُ خَيْرًا</div>
+    <h3>আলহামদুলিল্লাহ! আবেদন সফলভাবে জমা হয়েছে! 🎉</h3>
+    <p>আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।</p>
+    <p style="margin-top:0.5rem">📞 ০১৭১২-৮১১৬৯৮</p>
+  </div>
+</div>
+
+<script>
+  function nextOnEnter(event, nextId) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      var next = document.getElementById(nextId);
+      if (next) next.focus();
+    }
+  }
+
+  var inputs = document.querySelectorAll('input[required], select[required]');
+  inputs.forEach(function(input) {
+    input.addEventListener('input', updateProgress);
+    input.addEventListener('change', updateProgress);
+  });
+
+  function updateProgress() {
+    var filled = 0;
+    inputs.forEach(function(input) { if (input.value) filled++; });
+    document.getElementById('progressFill').style.width = (filled / inputs.length * 100) + '%';
+  }
+
+  function submitForm(event) {
+    event.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    btn.textContent = '⏳ অপেক্ষা করুন...';
+    btn.disabled = true;
+
+    var form = document.getElementById('admissionForm');
+    var data = {};
+    form.querySelectorAll('input, select').forEach(function(input) {
+      if (input.name && input.type !== 'checkbox') {
+        data[input.name] = input.value;
+      }
+    });
+
+    fetch('https://script.google.com/macros/s/AKfycbyX6Dm4Jn2bstafPKcpm_BMnzCN81u5o2ThVeOtD1V3-49ogN4zrWmSJed2eAz1x2Nn/exec', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(function() {
+      document.getElementById('admissionForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      window.scrollTo(0, 0);
+    })
+    .catch(function() {
+      document.getElementById('admissionForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      window.scrollTo(0, 0);
+    });
+  }
+</script>
+</body>
+</html>
